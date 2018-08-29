@@ -1,4 +1,5 @@
-var searchYouTube = ({key, query, max = 5}, callback) => {
+var searchYouTube = ({ key, query, max = 5 }, callback) => {
+  console.log('searchYoutubeCalled');
   $.get('https://www.googleapis.com/youtube/v3/search', {
     part: 'snippet',
     key: key,
@@ -12,10 +13,11 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
         callback(items);
       }
     })
-    .fail(({responseJSON}) => {
-      responseJSON.error.errors.forEach((err) =>
+    .fail((annoyingObj) => {
+      console.log(annoyingObj);
+      /* responseJSON.error.errors.forEach((err) =>
         console.error(err)
-      );
+      ); */
     });
 };
 
